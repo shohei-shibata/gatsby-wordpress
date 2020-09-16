@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allWpPost {
         nodes {
           id
-          uri
+          slug
         }
       }
     }
@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
   allPosts.forEach(post => {
     createPage({
       // will be the url for the page
-      path: post.uri,
+      path: `/blog/${post.slug}`,
       // specify the component template of your choice
       component: slash(postTemplate),
       // In the ^template's GraphQL query, 'id' will be available
